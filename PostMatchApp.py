@@ -189,6 +189,8 @@ available_vars = ['Possession',
                   'xG','xGA','xGD',
                   'Open Play xG','Open Play xGA','Open Play xGD',
                   'Set Piece xG','Set Piece xGA','Set Piece xGD',
+                  'xG within 5s of Crosses','xGA within 5s of Crosses',
+                  'xG within 15s of Set Pieces','xGA within 15s of Set Pieces','xGD within 15s of Set Pieces',
                   'npxG','npxGA','npxGD',
                   'GD','GD-xGD',
                   'xPts','Pts-xPts',
@@ -319,7 +321,7 @@ with graph_tab:
         lg_avg_var = league_data[var].mean()
         team_avg_var = team_data[var].mean()
 
-        if var in ['xT Difference','GD-xGD','Pts-xPts','npxGD','Open Play xGD','Set Piece xGD']:
+        if var in ['xT Difference','GD-xGD','Pts-xPts','npxGD','Open Play xGD','Set Piece xGD','xGD within 15s of Set Pieces']:
             ax.axhline(y=0, color='silver', linestyle='-.')
         else:
             ax.axhline(y=lg_avg_var, color='#ee5454', linestyle='-', label='League Avg')
@@ -417,7 +419,7 @@ with rank_tab:
     if rank_method == 'Average':
         rank_df = ranking_base_df.groupby(['Team'])[available_vars].mean().reset_index()
 
-    if rank_var in ['Open Play xGA per 1 xT Against','xGA','Set Piece xGA','Open Play xGA','npxGA','Goals Conceded','Shots Faced','xT Against','xGA per 1 xT Against','PPDA','Fouls','High Recoveries Against', 'Shots Faced per 1 xT Against']:
+    if rank_var in ['Open Play xGA per 1 xT Against','xGA','Set Piece xGA','xGA within 5s of Crosses','xGA within 15s of Set Pieces','Open Play xGA','npxGA','Goals Conceded','Shots Faced','xT Against','xGA per 1 xT Against','PPDA','Fouls','High Recoveries Against', 'Shots Faced per 1 xT Against']:
         sort_method = True
     else:
         sort_method = False
@@ -633,4 +635,3 @@ with st.expander("Game Control, On-Ball Pressure, & Off-Ball Pressure Explainer"
     All on-ball & off-ball actions are weighted differently, and the model has been iteratively tested & tweaked vs my eyes when watching many games across many different style leagues. Your opinion may differe, and that is perfectly fine as no model is perfect, foolproof, or should be taken at face-value. Please understand there are always limits.
     ''')
 
-	
