@@ -202,9 +202,9 @@ available_vars = ['Possession',
                  'Throw-Ins into the Box','On-Ball Pressure','On-Ball Pressure Share','Off-Ball Pressure','Off-Ball Pressure Share','Game Control','Game Control Share',
                  ]
 
-rank_vars = ['xPts','Possession','Field Tilt','Goals','Goals Conceded','Open Play xG','Open Play xGA','xT Difference','Open Play xG per 1 xT','PPDA','High Recoveries','High Recoveries Against',]
-rank_tfs = [False,False,False,False,True,False,True,False,False,True,False,True]
-rank_tfs_inv = [True,True,True,True,False,True,False,True,True,False,True,False]
+rank_vars = ['xPts','Possession','Field Tilt','Goals','Goals Conceded','Open Play xG','Open Play xGA','xG within 5s of Crosses','xGA within 5s of Crosses','xG within 15s of Set Pieces','xGA within 15s of Set Pieces','xT Difference','Open Play xG per 1 xT','PPDA','High Recoveries','High Recoveries Against',]
+rank_tfs = [False,False,False,False,True,False,True,False,True,False,True,False,False,True,False,True]
+rank_tfs_inv = [True,True,True,True,False,True,False,True,False,True,False,True,True,False,True,False]
 
 
 team_data[available_vars] = team_data[available_vars].astype(float)
